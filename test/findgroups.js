@@ -60,7 +60,7 @@ describe('findGroups Method', function () {
       })
     })
 
-    it.only('should return default group attributes when no filter is specified', function (done) {
+    it('should return default group attributes when no filter is specified', function (done) {
       const defaultAttributes = ActiveDirectory.defaultAttributes.group
       ad.findGroups({}, function (err, groups) {
         expect(err).to.be.null
