@@ -342,6 +342,42 @@ schema.com.domain['domain users'] = {
       'Domain Users',
       ['grpa']
     )
+  },
+
+  'celebrityb circularb': {
+    type: 'cn',
+    value: createUserObject(
+      'CelebrityB',
+      'CircularB',
+      'CBCB',
+      'celebb',
+      'Domain Users',
+      ['grpb']
+    )
+  },
+
+  'wendy writer': {
+    type: 'cn',
+    value: createUserObject(
+      'Wendy',
+      'Writer',
+      'WW',
+      'wewri',
+      'Domain Users',
+      ['editors']
+    )
+  },
+
+  'hank shareman': {
+    type: 'cn',
+    value: createUserObject(
+      'Hank',
+      'Shareman',
+      'HS',
+      'hshare',
+      'Domain Users',
+      ['contributors']
+    )
   }
 }
 
@@ -489,8 +525,26 @@ schema.getGroupMembers = function getGroupMembers (groupCN) {
     }
   }
 
+  function loopSubgroups (cn) {
+    for (const k of Object.keys(schema.com.domain['domain groups'])) {
+      const g = schema.com.domain['domain groups'][k]
+      if (Object.prototype.hasOwnProperty.call(g, 'type') === false) {
+        continue
+      }
+      if (Object.prototype.hasOwnProperty.call(g.value.attributes, 'memberOf') === false) {
+        continue
+      }
+      for (const gs of g.value.attributes.memberOf) {
+        if (gs.attributes.cn.toLowerCase() === groupCN.toLowerCase()) {
+          members.push(g.value.dn)
+        }
+      }
+    }
+  }
+
   loopUsers(domainUsers)
   loopUsers(adminUsers)
+  loopSubgroups()
 
   return members
 }
