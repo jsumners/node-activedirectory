@@ -45,8 +45,7 @@ tap.test('#getGroupMembershipForUser()', t => {
   t.test('should return empty groups if groupName doesn\'t exist', t => {
     return t.context.ad.getGroupMembershipForUser('!!!NON-EXISTENT GROUP!!!')
       .then((groups) => {
-        t.type(groups, Array)
-        t.equal(groups.length, 0)
+        t.is(groups, undefined)
       })
       .catch(t.error)
   })
