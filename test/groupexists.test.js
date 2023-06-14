@@ -22,7 +22,7 @@ tap.afterEach((done, t) => {
 })
 
 tap.test('should return true if the groupName (commonName) exists', t => {
-  t.context.ad.groupExists(settings.sAMAccountName, settings.groupName.cn, function (err, exists) {
+  t.context.ad.groupExists(settings.groupName.cn, function (err, exists) {
     t.error(err)
     t.true(exists)
     t.end()
@@ -30,7 +30,7 @@ tap.test('should return true if the groupName (commonName) exists', t => {
 })
 
 tap.test('should return true if the groupName (distinguishedName) exists', t => {
-  t.context.ad.groupExists(settings.sAMAccountName, settings.groupName.dn, function (err, exists) {
+  t.context.ad.groupExists(settings.groupName.dn, function (err, exists) {
     t.error(err)
     t.true(exists)
     t.end()
@@ -38,7 +38,7 @@ tap.test('should return true if the groupName (distinguishedName) exists', t => 
 })
 
 tap.test('should return false if the groupName doesn\'t exist', t => {
-  t.context.ad.groupExists(settings.sAMAccountName, '!!!NON-EXISTENT GROUP!!!', function (err, exists) {
+  t.context.ad.groupExists('!!!NON-EXISTENT GROUP!!!', function (err, exists) {
     t.error(err)
     t.false(exists)
     t.end()
