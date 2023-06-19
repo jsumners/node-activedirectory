@@ -46,7 +46,14 @@ var ActiveDirectory = require('activedirectory2');
 var config = { url: 'ldap://dc.domain.com',
                baseDN: 'dc=domain,dc=com',
                username: 'username@domain.com',
-               password: 'password' }
+               password: 'password',
+               attributes: {
+               user: [
+               // your preferred attributes,
+               "dn"],
+               group: [
+               // your preferred attributes,
+               "dn"]}
 var ad = new ActiveDirectory(config);
 ```
 
