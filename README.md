@@ -1,3 +1,13 @@
+# No Longer Maintained
+
+As noted below in the "Module Maintenance Notice," this module has not been
+a priority for many years, and is unlikely to be one ever again. Since
+the underlying library, `ldapjs`, has been decomissioned, and is also not
+likely to ever see any further maintenance, this library is also
+decomissioned as of 2025-04-01. ~ James Sumners
+
+-----
+
 ActiveDirectory for Node
 =========
 
